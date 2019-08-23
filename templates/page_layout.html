@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block alert %}
+
+{% if alert is defined %}
+<div class="row justify-content-center">
+<div class="alert col-10 col-lg-6 {% if alert.status == 0 %} alert-success {% else %} alert-danger {% endif %}" role="alert">
+  {% if alert.status == 0 %} <strong> Yay! </strong> {% else %} <strong> Ouch! </strong> {% endif %}
+  {{alert.text}} {% if alert.status == 0 %} <hr> <a href="{{ url_for("Home") }}" class="alert-link"> Go back </a> {% endif %}
+
+</div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block heading %}
+<div class="row justify-content-center mt-5">
+    <div class="col-xs-4">
+        <h1><b>Books </b> /// {%block h1%} {%endblock%} </h1>
+    </div>
+</div>
+{% endblock %}
+
+{%block body %}
+
+<div class="row justify-content-center">
+    <div class="card bg-dark text-white shadow col-10 col-lg-6">
+        <div class="card-body">
+            {% block maincard %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

@@ -1,0 +1,149 @@
+{% extends "page_layout.html" %}
+
+<style> 
+
+</style>
+
+{%block h1 %} Book page {%endblock%}
+
+{%block body %} 
+
+<div class="row align-items-start justify-content-around mb-3">
+  <div class="col-md-6">
+    <div class="card bg-info text-white shadow mb-3">
+      <div class="card-body">
+        <h3 class="card-title">General information</h3>
+
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">ISBN</th>
+                <td>{{book.isbn}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Title</th>
+                <td>{{book.title}}</td>
+              </tr>
+              <tr>
+               <th scope="row">Author</th>
+               <td>{{book.author}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Year</th>
+                <td>{{book.year}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+      </div>
+    </div>
+    {% if review_added != True %}
+    <div class="card bg-dark text-white shadow mb-3">
+      
+        <div class="card-body">
+          <h3 class="card-title"> Add your review </h3>
+
+          <div class="form-group">
+            <form action="/add_review/{{book.isbn}}" method="post">
+
+
+                <label for="text">What do you think about this book?</label>
+                <input type="text" class="form-control" name="review_text" id="text" placeholder="Your review" required> 
+                <label for="radios">Please rate the book from 1 to 5.</label> <br>
+
+                <div class="form-check form-check-inline" id="radios">
+                  <input class="form-check-input" type="radio" name="rating" id="inlineRadio1" value="1" required>
+                  <label class="form-check-label" for="inlineRadio1">1</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="rating" id="inlineRadio2" value="2">
+                  <label class="form-check-label" for="inlineRadio2">2</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="rating" id="inlineRadio3" value="3">
+                  <label class="form-check-label" for="inlineRadio3">3</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="rating" id="inlineRadio4" value="4">
+                  <label class="form-check-label" for="inlineRadio4">4</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="rating" id="inlineRadio2" value="5">
+                  <label class="form-check-label" for="inlineRadio5">5</label>
+                </div>
+              <br> <br> 
+              <input type="submit" class="btn btn-primary" value="Submit">
+              </form>
+
+          </div>
+
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+
+<div class="col-md-5">
+  <div class="card bg-dark text-white shadow mb-3">
+    <div class="card-body">
+      <h3 class="card-title">Goodreads </h3>
+      {% if book.average_rating != -1 %}
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">Average rating</th>
+            <td> {{book.average_rating}} </td>
+          </tr>
+          <tr>
+            <th scope="row">Reviews count</th>
+            <td>{{book.reviews_count}}</td>
+          </tr>
+        </tbody>
+      </table>
+    
+
+
+        {% else %}
+      <div class="alert alert-danger" role="alert">
+        Unfortunately, Goodreads info is unavailable for this book.
+      </div>
+    
+      {%endif%}
+    </div>
+  </div>
+
+  {% if book.reviews|length != 0 %}
+
+  {% for item in book.reviews %}
+
+  <div class="card bg-dark text-white shadow mb-3">
+    <div class="card-body">
+      <h5 class="card-title">User review</h5>
+      <p class="card-text"><b>Rating:</b> {{item[1]}} </p>
+      <p class="card-text"><b>Review text: </b> {{item[2]}} </p>
+   
+    </div>
+  </div>
+
+  {% endfor %}
+  {% endif %}
+
+  <div class="row justify-content-center mt-5">
+    <a href="{{url_for("Search")}}" role="button" class="btn btn-outline-primary mr-1">Back to Search</a> 
+    <a href="{{url_for("logout")}}" role="button" class="btn btn-outline-secondary">Logout</a>
+</div>
+
+</div>
+
+
+
+</div>
+
+{%endblock%}
+
+{% block footer %}
+
+
+
+{% endblock %}

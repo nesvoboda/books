@@ -1,0 +1,16 @@
+body {
+      background: #262626;
+      color: white;
+      font-family: 'Open Sans', sans-serif;
+    }
+    h1 {
+      padding-bottom: 1em;
+      color: white;
+      font-family: 'Fira Sans', sans-serif;
+    }
+    .form-control {
+      margin-bottom: 0.8em;
+    }
+    #hero {
+      margin-top: 9em;
+    } 

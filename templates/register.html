@@ -1,0 +1,26 @@
+{% extends "page_layout.html" %}
+
+{%block h1 %} Register {%endblock%}
+
+
+{% block maincard %}
+<form action="/submit" method="post"">
+    <div class="row">
+        <label for="username">Username</label>
+    </div>
+    <div class="row justify-content-center">
+        <input type="username" class="form-control" name="username" id="username" placeholder="Your username"> 
+    </div>
+    <div class="row">
+        <label for="password">Password</label>
+    </div>
+    <div class="row justify-content-center">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Your password">
+    </div>
+
+    <div class="row justify-content-center">   
+        <input type="submit" class="btn btn-primary mt-3" value="Submit">
+    </div>
+</form>
+{% endblock %}
+

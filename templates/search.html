@@ -1,0 +1,33 @@
+{% extends "page_layout.html" %}
+
+{%block h1 %} Search {%endblock%}
+
+{%block maincard %}
+
+<form action="/search_results" method="get">
+    <label for="isbn">ISBN</label>
+    <div class="row justify-content-center">
+        <input type="search" class="form-control" name="isbn" id="isbn" placeholder="Type in the ISBN of the book">
+    </div>
+    <label for="title">Book title</label>
+    <div class="row justify-content-center">
+        <input type="search" class="form-control" name="title" id="title" placeholder="Type in the title of the book"> 
+    </div>
+    <label for="author">Book author</label>
+    <div class="row justify-content-center">
+        <input type="search" class="form-control" name="author" id="author" placeholder="Type in the author of the book"> 
+    </div>
+    <div class="row justify-content-center">
+        <input type="submit" class="btn btn-primary mt-2" value="Submit">
+    </div>
+</form>
+        
+{%endblock%}
+
+{% block footer %}
+
+<div class="row justify-content-center mt-5">
+    <a href="{{url_for("logout")}}" role="button" class="btn btn-outline-secondary">Logout</a>
+</div>
+
+{% endblock %}

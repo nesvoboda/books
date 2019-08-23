@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %} Home {% endblock %}
+{% block body %}
+        
+        <div class="jumbotron bg-dark shadow" id="hero">
+            <div class="row justify-content-center">
+                <h3 class="d-block d-sm-none"> Digital Books Registry </h1> 
+                <h1 class="d-none d-sm-block"> Digital Books Registry </h1>  
+            </div>
+          <p class="lead text-center">This project shows how you can store information about books using Python and PostgreSQL.</p>
+          <hr class="my-4">
+          <p class="text-center"> Made by Arseny Shishaev for <b>CS50 Web Programming with Python and Javascript</b>. The design is based on Twitter Bootstrap cards.</p>
+          <div class="row justify-content-center">
+            <a class="btn-lg btn-primary mt-3 mr-2" href="{{url_for("Login")}}" role="button">Login</a>
+            <a class="btn-lg btn-primary mt-3 mr-2" href="{{url_for("Register")}}" role="button">Register</a>
+          </div>
+
+        </div>
+    
+      
+     
+ {% endblock %}
